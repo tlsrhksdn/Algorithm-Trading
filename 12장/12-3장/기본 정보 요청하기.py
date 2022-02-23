@@ -1,156 +1,3 @@
-# import sys
-# from PyQt5.QtWidgets import *
-
-#12-01
-# app=QApplication(sys.argv)
-# label=QLabel("Hello PyQt")
-# label.show()
-# app.exec_()
-
-#12-02
-# app=QApplication(sys.argv)
-# label=QPushButton("Quit")
-# label.show()
-# app.exec_()
-
-#12-03
-# app=QApplication(sys.argv)
-# print(sys.argv)
-# label=QLabel("Hello PyQt")
-# label.show()
-# app.exec_()
-
-#12-04.QMainWindow를 이용한 윈도우 생성
-
-#위젯:사용자 인터페이스를 구성하는 가장 기본적인 부품 역할
-
-# class MyWindow(QMainWindow): 
-#     def __init__(self):
-#         super().__init__()    #부모 클래스에 정의된 __init__()을 호출한다
-#         self.setWindowTitle("PyStock")        #윈도우의 타이틀 창의 택스트를 바꾸는 메서드
-#         self.setGeometry(300,300,300,400)     #창의 위치 및 크기를 조절하는 메서드
-
-# class Parent:
-#     house="yong-san"
-#     def __init__(self):
-#         self.money=10000
-        
-# class Child1(Parent):
-#     def __init__(self):
-#         super().__init__()  #부모 클래스의 생성자를 명시적으로 호출
-#         pass
-    
-# class Child2(Parent):
-#     def __init__(self):
-#         pass
-
-# child1=Child1()
-# child2=Child2()
-
-# print('Child1',dir(child1))  #정의된 클래스의 인스턴스를 생성한 후 dir 내장함수를 이용해 객체의 속성값을 확인
-# print('Child2',dir(child2))
-        
-        
-# if __name__=="__main__":     
-#     app=QApplication(sys.argv)
-#     mywindow=MyWindow()
-#     mywindow.show()
-#     app.exec_()
-
-# import sys
-# from PyQt5.QtWidgets import *
-# from PyQt5.QtCore import *
-
-# class MyWindow(QMainWindow):
-#     def __init__(self):
-#         super().__init__()
-#         self.setWindowTitle("PyStock")
-#         self.setGeometry(300,300,300,400)
-        
-#         btn1=QPushButton("Click me",self)
-#         btn1.move(20,20)
-#         btn1.clicked.connect(self.btn1_clicked)
-        
-#     def btn1_clicked(self):
-#         QMessageBox.about(self,"message","clicked")
-        
-# if __name__ == "__main__":
-#     app=QApplication(sys.argv)
-#     myWindow=MyWindow()
-#     myWindow.show()
-#     app.exec_()
-
-
-#Open API+ 로그인하기
-
-# import sys
-# from PyQt5.QtWidgets import *
-# from PyQt5.QtGui import *
-# from PyQt5.QAxContainer import * #부합하는 파일 x  #16장 헤결법 참고
-
-# class MyWindow(QMainWindow):
-#     def __init__(self):
-#         super().__init__()
-#         self.setWindowTitle("PyStock")
-#         self.setGeometry(300,300,300,150)
-        
-#         self.kiwoom=QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
-                
-#         btn1=QPushButton("Login",self)
-#         btn1.move(20,20)
-#         btn1.clicked.connect(self.btn1_clicked)
-        
-#         btn2=QPushButton("Check state",self)
-#         btn2.move(20,70)
-#         btn2.clicked.connect(self.btn2_clicked)
-        
-#     def btn1_clicked(self):
-#         ret=self.kiwoom.dynamicCall("CommConnect()") 
-#         #OCX방식: QAxBase 클래스의 dynamicCall 매서드를 사용해 원하는 메서드를 호출
-#         #CommConnect 매서드를 통해 키움증권 서버에 로그인을 시도
-#     def btn2_clicked(self):
-#         if self.kiwoom.dynamicCall("GetConnectState()")==0:
-#             self.statusBar().showMessage("Not connected")
-#         else:
-#             self.statusBar().showMessage("Connected")
-            
-# if __name__=="__main__":
-#     app=QApplication(sys.argv)
-#     mywindow=MyWindow()
-#     mywindow.show()
-#     app.exec_()
-
-# import sys
-# from PyQt5.QtWidgets import *
-# from PyQt5.QtGui import *
-# from PyQt5.QAxContainer import *
-
-# class MyWindow(QMainWindow):
-#     def __init__(self):
-#         super().__init__()
-#         self.setWindowTitle("PyStock")
-#         self.setGeometry(300,300,300,150)
-        
-#         self.kiwoom=QAxWidget("KHOPENAPI.KHOPENAPICtrl.1")
-#         self.kiwoom.dynamicCall("CommConnect()")
-        
-#         self.text_edit=QTextEdit(self)
-#         self.text_edit.setGeometry(10,60,200,80)   #QTextEdit 클래스의 크기 및 출력 위치를 조절
-#         self.text_edit.setEnabled(False)   #QTextEdit 클래스의 읽기/쓰기 모드를 변경
-        
-#         self.kiwoom.OnEventConnect.connect(self.event_connect)
-
-#         #OnEventConnect 이벤트를 처리해 로그인 성공 여부를 출력하는 프로그램
-#     def event_connect(self,err_code):
-#         if err_code==0:
-#             self.text_edit.append("로그인 성공")
-            
-# if __name__=="__main__":
-#     app=QApplication(sys.argv)
-#     MyWindow=MyWindow()
-#     MyWindow.show()
-#     app.exec_()
-
 #프로그램의 UI를 구성하는 코드
 
 # import sys
@@ -190,8 +37,10 @@
 #     myWindow.show()
 #     app.exec_()
 
+
 #QLineEdit 위젯에 종목 코드를 입력한 후 [조회]버튼을 클릭하면
 #입력된 종목 코드가 QTextEdit 위젯에 출력되도록 코드를 수정한다.
+#로그인 이벤트 처리도 추가
 
 # import sys
 # from PyQt5.QtWidgets import *
@@ -237,6 +86,8 @@
 #     myWindow = MyWindow()
 #     myWindow.show()
 #     app.exec_()
+
+
 
 #사용자에게서 입력받은 종목 코드와 Open API+가 제공하는 TR 메서드를 통해
 #기본 정보를 가져오는 코드를 작성한다.
@@ -297,10 +148,6 @@ class MyWindow(QMainWindow):
 
             self.text_edit.append("종목명: " + name.strip())
             self.text_edit.append("거래량: " + volume.strip())
-        
-            #rqname값이 'opt10001_req'인지 확인
-            #rqname이 'opt10001_req'이면 CommGetData 메서드를 호출해 '종목명'과 '거래량'에 해당하는 값을 가져온다
-            #CommGetData 메서드를 호출해 '종목명'과 '거래량' 값을 가져왔다면->strip 메서드를 호출해 문자열의 공백을 제거하고,이후 QTexEdit 객체에 해당 문자열을 추가한다
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
