@@ -50,5 +50,5 @@ print(type(day_data))
 print(daeshin_day.columns)
 print(daeshin_day.index)
 
-Index(['open', 'high', 'low', 'close'], dtype='object')
-Index(['16.02.29', '16.02.26', '16.02.25', '16.02.24', '16.02.23'], dtype='object')
+# Index(['open', 'high', 'low', 'close'], dtype='object')
+# Index(['16.02.29', '16.02.26', '16.02.25', '16.02.24', '16.02.23'], dtype='object')
