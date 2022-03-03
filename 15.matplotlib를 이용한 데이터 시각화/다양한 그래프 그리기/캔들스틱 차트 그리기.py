@@ -28,18 +28,18 @@
 # plt.show()
 
 #그래프의 x축에 정수 인덱스가 아닌 날짜가 출력되도록 변경한다
-from sqlite3 import Timestamp
-import pandas_datareader.data as web
+# from sqlite3 import Timestamp
+# import pandas_datareader.data as web
 
-import datetime
+# import datetime
 
-start = datetime.datetime(2016, 3, 1)
+# start = datetime.datetime(2016, 3, 1)
 
-end = datetime.datetime(2016, 3, 31)
+# end = datetime.datetime(2016, 3, 31)
 
-skhynix = web.DataReader("000660.KS", "yahoo", start, end)
+# skhynix = web.DataReader("000660.KS", "yahoo", start, end)
 
-skhynix.index
+# skhynix.index
 
 # skhynix.index[0]은 '2016-03-01 00:00:00'을 의미한다
 # 객체 타입은 pandas의 Timestamp이다.
@@ -59,3 +59,61 @@ skhynix.index
 #     name_list.append(day.strftime('%d'))
     
 # name_list
+
+#봉 차트 2
+
+import pandas_datareader.data as web
+import datetime
+import matplotlib.pyplot as plt
+import mpl_finance
+import matplotlib.ticker as ticker
+#matplotlib에서 x축과 y축에 표시되는 값:ticker
+#ticker을 설정하려면 ticker의 위치와 각 위치에서 출력될 값이 필요하다
+
+# start = datetime.datetime(2016, 3, 1)
+# end = datetime.datetime(2016, 3, 31)
+# skhynix = web.DataReader("000660.KS", "yahoo", start, end)
+
+# fig = plt.figure(figsize=(12, 8))
+# ax = fig.add_subplot(111)
+
+# day_list = range(len(skhynix))
+# name_list = []
+# for day in skhynix.index:
+#     name_list.append(day.strftime('%d'))
+
+
+# ax.xaxis.set_major_locator(ticker.FixedLocator(day_list))   #위치를 설정하는 함수
+# ax.xaxis.set_major_formatter(ticker.FixedFormatter(name_list))    #출력되는 값을 설정하는 함수
+
+# mpl_finance.candlestick2_ohlc(ax, skhynix['Open'], skhynix['High'], skhynix['Low'], skhynix['Close'], width=0.5, colorup='r', colordown='b')
+# plt.show()
+
+#봉 차트-3
+
+# import pandas_datareader.data as web
+# import datetime
+# import matplotlib.pyplot as plt
+# import mpl_finance
+# import matplotlib.ticker as ticker
+
+# start = datetime.datetime(2016, 3, 1)
+# end = datetime.datetime(2016, 3, 31)
+# skhynix = web.DataReader("000660.KS", "yahoo", start, end)
+
+# fig = plt.figure(figsize=(12, 8))
+# ax = fig.add_subplot(111)
+
+# day_list = []
+# name_list = []
+# for i, day in enumerate(skhynix.index):
+#     if day.dayofweek == 0:    #dayofweek라는 속성을 사용해 거래일의 요일을 쉽게 확인할 수 있다
+#         day_list.append(i)
+#         name_list.append(day.strftime('%Y-%m-%d') + '(Mon)')
+
+# ax.xaxis.set_major_locator(ticker.FixedLocator(day_list))
+# ax.xaxis.set_major_formatter(ticker.FixedFormatter(name_list))
+
+# mpl_finance.candlestick2_ohlc(ax, skhynix['Open'], skhynix['High'], skhynix['Low'], skhynix['Close'], width=0.5, colorup='r', colordown='b')
+# plt.grid()
+# plt.show()
